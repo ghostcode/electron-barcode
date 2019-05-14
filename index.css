@@ -1,0 +1,29 @@
+body{
+  background-color: #ddd;
+}
+.barcode-box{
+  padding-top: 20px;
+  text-align: center;
+}
+.barcode-input{
+  height:40px;
+  width:500px;
+  line-height: 40px;
+  padding:0 4px;
+  border-radius: 3px;
+  border:none;
+  outline: none;
+  margin-bottom: 20px;
+}
+.barcode-button{
+  display: inline-block;
+  width:40px;
+  height:40px;
+  width:50px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 3px;
+  color:#fff;
+  background-color: #333;
+  cursor:pointer;
+}

@@ -2,16 +2,36 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>商品条码生成器</title>
+    <link rel="stylesheet" href="./index.css">
+    <script src="./JsBarcode.all.min.js"></script>
   </head>
   <body>
-    <h1>Hello World!</h1>
+    <div class="barcode-box">
+      <div class="form-item">
+        <input type="text" class="barcode-input">
+        <a class="barcode-button">生成</a>
+      </div>
+      <br>
+      <canvas id="barcode"></canvas>
+    </div>
     <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
+    <!-- We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-
+    and Electron <script>document.write(process.versions.electron)</script>. -->
     <script>
+      let input = document.querySelector('.barcode-input'),
+        button = document.querySelector('.barcode-button')
+
+      button.addEventListener('click',function(){
+        let val = input.value.trim()
+        if(!val){
+          input.focus()
+          input.value = ''
+          return
+        }
+        JsBarcode("#barcode", val);
+      },false)
       // You can also require other files to run in this process
       require('./renderer.js')
     </script>
