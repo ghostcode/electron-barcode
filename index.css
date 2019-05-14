@@ -5,6 +5,9 @@ body{
   padding-top: 20px;
   text-align: center;
 }
+.barcode{
+  margin-bottom: 40px;
+}
 .barcode-input{
   height:40px;
   width:500px;
@@ -14,12 +17,17 @@ body{
   border:none;
   outline: none;
   margin-bottom: 20px;
+  color:#2980b9;
+  font-size:14px;
 }
-.barcode-button{
+.barcode-input::placeholder{
+  font-size:16px;
+  color:#16a085;
+}
+.code-button{
   display: inline-block;
-  width:40px;
   height:40px;
-  width:50px;
+  padding:0 10px;
   text-align: center;
   line-height: 40px;
   border-radius: 3px;

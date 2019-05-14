@@ -16,13 +16,12 @@ function createWindow () {
     },
   })
 
-  mainWindow.webContents.openDevTools({
-    mode:'bottom'
-  })
+  // mainWindow.webContents.openDevTools({
+  //   mode:'bottom'
+  // })
   
   // and load the index.html of the app.
   mainWindow.loadFile('index.html').then(()=>{
-    console.log('>>>>>>>>>>>>>')
   })
 
   // Open the DevTools.
