@@ -2,6 +2,8 @@
 const {app, BrowserWindow,} = require('electron')
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
+const {autoUpdater} = require('electron-updater')
+
 let mainWindow
 
 function createWindow () {
@@ -16,9 +18,9 @@ function createWindow () {
     },
   })
 
-  // mainWindow.webContents.openDevTools({
-  //   mode:'bottom'
-  // })
+  mainWindow.webContents.openDevTools({
+    mode:'bottom'
+  })
   
   // and load the index.html of the app.
   mainWindow.loadFile('index.html').then(()=>{
@@ -36,11 +38,35 @@ function createWindow () {
   })
 }
 
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow)
+
+app.on('ready',function(){
+  // autoUpdater.checkForUpdates()
+  autoUpdater.checkForUpdatesAndNotify()
+})
+
+autoUpdater.on('check-for-update',function(){
+  console.log('check for update')
+})
+
+autoUpdater.on('update-available',function(){
+  console.log('update available')
+})
+
+autoUpdater.on('update-not-available',function(){
+  console.log('update not available')
+})
+
+autoUpdater.on('download-progress',function(){
+  console.log('download-progress')
+})
+
+autoUpdater.on('update-downloaded',function () {
+  autoUpdater.quitAndInstall()
+})
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
